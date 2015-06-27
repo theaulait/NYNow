@@ -1,18 +1,30 @@
 package nyc.c4q.nyteam.nynow;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
+
+    Button go;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        go = (Button) findViewById(R.id.go);
+    }
+
+    public void goToSpotify(View v){
+        Intent intent = new Intent(MainActivity.this, SpotifyCard.class);
+        startActivity(intent);
     }
 
 

@@ -1,5 +1,6 @@
 package nyc.c4q.nyteam.nynow;
 
+import android.app.ListActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
+import com.squareup.picasso.Picasso;
 
 public class SpotifyCard extends Activity implements
         PlayerNotificationCallback, ConnectionStateCallback {
@@ -37,11 +39,11 @@ public class SpotifyCard extends Activity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.spotify_search);
 
         AuthenticationRequest.Builder builder =
                 new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-        builder.setScopes(new String[]{"user-read-private", "streaming"});
+        builder.setScopes(new String[]{"user-read-private", "playlist-read-private", "playlist-modify-public", "playlist-modify-private", "user-library-read", "user-library-modify", "user-follow-read", "user-follow-modify", "streaming"});
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
@@ -124,4 +126,6 @@ public class SpotifyCard extends Activity implements
         Spotify.destroyPlayer(this);
         super.onDestroy();
     }
+
+
 }

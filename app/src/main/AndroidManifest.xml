@@ -3,6 +3,7 @@
     package="nyc.c4q.nyteam.nynow" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +22,9 @@
 
         <activity
             android:name=".SpotifyCard"
-            android:label="@string/spotify" >
+            android:label="@string/spotify"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <data android:scheme="my.spotify.entry.point" />
                 <action android:name="android.intent.action.VIEW" />
